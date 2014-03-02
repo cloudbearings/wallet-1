@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="styletrip_engine_api">
+	<property name="st.jar" value="styletrip_engine.jar"/>
+	<property name="st.dir" location="../styletrip_engine/"/>
+	<property name="in.jar" value="infinitibeat-engine-lib.jar"/>
+	<property name="in.dir" location="../infinitibeat-engine-lib"/>
+	
+	<property name="lib.dir" location="WebContent/WEB-INF/lib"/>
+	<target name="sync_lib">
+		<copy todir="${lib.dir}" overwrite="true">
+			<fileset dir="${st.dir}/lib"/>
+		</copy>
+		<copy file="${st.dir}/${st.jar}" todir="${lib.dir}" overwrite="true"/>
+		<copy file="${in.dir}/${in.jar}" todir="${lib.dir}" overwrite="true"/>
+	</target>
+
+	<property name="deploy.dir" location="/var/lib/tomcat7/webapps/styletrip_engine_api"/>
+	<target name="deploy">
+		<copy todir="${deploy.dir}" overwrite="true">
+			<fileset dir="WebContent"/>
+		</copy>
+	</target>
+</project>
